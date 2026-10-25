@@ -192,12 +192,36 @@ sudo systemctl start ict-backend
 
 ---
 
-## 12. 未验证项（首次执行后回填）
+## 12. 实机验证结果（2026-10-25 已回填）
+
+主机 `124.70.187.77`（Ubuntu 24.04.4 / 2核2G / 华东-上海一），完整记录见
+`audit/backend/cloud_deploy_20261025/report.md`。
 
 | 项 | 状态 |
 |---|---|
-| `build-linux.sh` 在 Linux 实机是否通过 | 未验证 |
-| 仓颉 Linux 产物路径是否与脚本猜测一致 | 未验证（脚本已尝试三种候选路径） |
-| 2G 内存是否够编译 | 未验证（备 swap 方案） |
-| Nginx SSE 是否真的不缓冲 | 未验证（需实测流式首字时延） |
-| `ProtectSystem=strict` 是否影响 stdx 加载 | 未验证（只读加载应无影响） |
+| `build-linux.sh` 在 Linux 实机 | **通过**：build exit 0，`cjpm test` 35/35 PASSED |
+| 仓颉 Linux 产物路径 | **确认**：`target/release/bin/main`（脚本第一种候选即命中） |
+| 2G 内存是否够编译 | **够**（加了 2G swap；未单独验证无 swap 情况） |
+| Ubuntu 24.04 兼容性 | **通过**：`ldd cjc` 零缺失库 |
+| `cjc --version` | `1.0.5 (cjnative)`，target `x86_64-unknown-linux-gnu` |
+| 部署包自包含 | **原不成立**，已修：缺 `libcangjie-runtime.so`，见下方 |
+| systemd 单元 | **通过**：`ProtectSystem=strict` 下正常启动并 active |
+| Nginx SSE 不缓冲 | 未验证（域名与证书未到位，未装 nginx） |
+| 公网 HTTPS 可达 | 未验证（同上） |
+
+### 部署包缺运行时库（已修）
+
+`package-cloud-linux.sh` 初版只打包 stdx，漏了仓颉运行时库，服务启动报
+`error while loading shared libraries: libcangjie-runtime.so`，`systemctl` 反复 `status=127`。
+
+修复：打包时把 `$CANGJIE_HOME/runtime/lib/linux_x86_64_cjnative/*.so` 并入包内 `stdx/`。
+修复后 `ldd /opt/ict-cloud/main` 零缺失，包内 `stdx/` 共 83 个 `.so`（stdx 35 + runtime 48）。
+
+> 若手工部署而不用打包脚本，必须保证 `LD_LIBRARY_PATH` 同时包含
+> `stdx` 目录与 `$CANGJIE_HOME/runtime/lib/linux_x86_64_cjnative`。
+
+### 下载源的两个坑
+
+1. `cangjie-lang.cn` 下载直链是**签名 URL**，只能从页面 JS 生成的 `<a href>` 里取，猜不出来。
+2. gitcode 对普通宽带的 IP 返回 **418**，对华为云主机 IP 返回 **200**。大文件让服务器自己下：
+   本机 SFTP 上传实测 33 KB/s（268MB ≈ 2.3 小时），服务器直下 1.2—1.5 MB/s（≈3 分钟）。

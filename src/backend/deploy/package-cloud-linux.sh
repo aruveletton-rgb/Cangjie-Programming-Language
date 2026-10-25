@@ -53,6 +53,18 @@ chmod +x "$OUT/main"
 cp -r "$BUILD_ROOT/stdx" "$OUT/stdx"
 cp "$REPO_ROOT/src/data/synthetic.runtime.json" "$OUT/data/synthetic.runtime.json"
 
+# 仓颉运行时库不在 stdx 包里，而在 SDK 的 runtime/lib 下。
+# 不并进来，服务启动会以 status=127 失败并报
+# "error while loading shared libraries: libcangjie-runtime.so"（2026-10-25 实测踩到）。
+CJ_HOME="${CANGJIE_HOME:-/opt/cangjie}"
+RUNTIME_LIB="$CJ_HOME/runtime/lib/linux_x86_64_cjnative"
+if [[ -d "$RUNTIME_LIB" ]]; then
+  cp -f "$RUNTIME_LIB"/*.so "$OUT/stdx/"
+  echo "runtime lib: $(ls "$RUNTIME_LIB"/*.so | wc -l) 个 .so 已并入 stdx/"
+else
+  echo "WARNING: 未找到 $RUNTIME_LIB，包将依赖宿主机上的仓颉 runtime" >&2
+fi
+
 for f in tls-proxy.mjs preflight-provider.mjs preflight-deploy.mjs \
          provider.env.example gen-cert.sh start-cloud.sh stop-cloud.sh \
          ict-backend.service nginx-campus.conf; do
