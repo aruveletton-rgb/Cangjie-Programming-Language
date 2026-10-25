@@ -182,9 +182,37 @@ node deploy/preflight-provider.mjs --live   # 只在 ICT_PROVIDER_REAL=1 时发�
 - 真实公网 IP 的证书与安全组入站 8443
 - 云主机上的实际部署
 - 浏览器端到端（远端机器）
-- Linux 编译链路（用户已选 Windows 镜像，本项不再需要）
+- **Linux 编译链路**（2026-10-25 起改为主推路线，见第 10 节；仍未实机验证）
 - 真实模型调用（无凭据，`realG1Ran` 恒为 false）
 - 免费额度的限速具体值（需在控制台确认）
+
+---
+
+## 10. Linux 路线（2026-10-25 新增）
+
+**为什么加**：课程要求上架后，主机从"能跑就行"变成"要便宜且能备案"。Flexus L 2核2G Linux 首年约 ¥68，
+是 Flexus X + Windows（两月 ¥102—302）的 1/6—1/10；且官方 FAQ 明确 **L 实例可生成备案授权码**。
+代价是要重编译一次——仓颉 SDK 官方支持 Linux，路径可行但**尚未实机验证**。
+
+| 文件 | 作用 | 验证状态 |
+|---|---|---|
+| `build-linux.sh` | 在 ASCII 临时目录构建 + 可选跑单测，产出 `main` 与审计 json | 仅 `bash -n` 通过，**未实机编译** |
+| `package-cloud-linux.sh` | 打自包含包（`main` + `stdx/*.so` + data + deploy），逐文件 sha256 | 同上 |
+| `start-cloud.sh` / `stop-cloud.sh` | 前台启停 + `/health` 轮询 | 同上 |
+| `ict-backend.service` | systemd 单元，`ProtectSystem=strict`，只允许写 state/logs | 未在 systemd 下验证 |
+| `nginx-campus.conf` | 80→443、443 反代 38082、托管 `/app/` 与 `/privacy`、SSE 关缓冲 | 未在 nginx 下验证 |
+
+与 Windows 路线的对应关系：`package-cloud.ps1` ↔ `package-cloud-linux.sh`；
+`start-cloud.ps1` ↔ `start-cloud.sh` + `ict-backend.service`；
+`tls-proxy.mjs` ↔ `nginx-campus.conf`（`tls-proxy.mjs` 保留为无 nginx 时的退路）。
+
+**与 Windows 路线的关键差异**：
+
+- 反代换成 Nginx 后，`ICT_PUBLIC_ORIGIN` 仍是**唯一**的放行依据，`Host` 必须原样透传，否则 origin 校验失败
+- 后端仍只绑 `127.0.0.1`，安全组**只放 80/443**，38082 永不开公网
+- 证书从自签 IP SAN 改为 Let's Encrypt 域名证书，浏览器不再告警（自签那套的告警代价消失）
+
+完整步骤与验收清单见 `docs/deploy_runbook_20261025.md`（仓库内 `docs/deploy_runbook_20261025.md`）。
 
 ---
 

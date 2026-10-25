@@ -1,0 +1,35 @@
+[Unit]
+Description=ICT Campus Assistant backend (Cangjie)
+Documentation=file:/opt/ict-cloud/deploy/README.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ict
+Group=ict
+WorkingDirectory=/opt/ict-cloud
+
+# runtime.env 由 provider.env.example 复制而来，含 ICT_PORT / ICT_DATA / ICT_STORE /
+# ICT_PUBLIC_ORIGIN 等。**不要把任何密钥写进本 unit 文件**，unit 会被复制、截图、贴进文档。
+EnvironmentFile=/opt/ict-cloud/deploy/runtime.env
+Environment=LD_LIBRARY_PATH=/opt/ict-cloud/stdx
+Environment=ICT_ENABLE_TEST_FAULTS=0
+
+ExecStart=/opt/ict-cloud/main
+Restart=always
+RestartSec=3
+TimeoutStopSec=15
+
+# 最小权限：只允许写 state 与 logs，其余文件系统只读。
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/ict-cloud/state /opt/ict-cloud/logs
+
+StandardOutput=append:/opt/ict-cloud/logs/backend.stdout.log
+StandardError=append:/opt/ict-cloud/logs/backend.stderr.log
+
+[Install]
+WantedBy=multi-user.target
