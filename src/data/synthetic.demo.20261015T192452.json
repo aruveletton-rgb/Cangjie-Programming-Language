@@ -1,0 +1,643 @@
+{
+  "lostItems": [
+    {
+      "kind": "lost",
+      "occurredOn": "2026-10-15",
+      "location": "图书馆公共区域",
+      "domainId": "campus-demo",
+      "lostItemId": "lost-public-001",
+      "itemDescription": "合成蓝色水杯",
+      "contactAlias": "SYN-CONTACT-K",
+      "status": "APPROVED"
+    }
+  ],
+  "synthetic": true,
+  "activities": [
+    {
+      "title": "合成志愿活动",
+      "status": "OPEN",
+      "session": "morning",
+      "domainId": "campus-demo",
+      "capacity": 2,
+      "synthetic": true,
+      "deadlineAt": "2026-10-17T11:27:38Z",
+      "activityId": "campus-demo-activity-001",
+      "location": "公共活动室",
+      "startsAt": "2026-10-18T11:27:38Z"
+    },
+    {
+      "title": "合成已截止活动",
+      "status": "CLOSED",
+      "session": "morning",
+      "domainId": "campus-demo",
+      "capacity": 1,
+      "synthetic": true,
+      "deadlineAt": "2026-10-13T11:27:38Z",
+      "activityId": "campus-demo-closed",
+      "location": "公共活动室",
+      "startsAt": "2026-10-14T11:27:38Z"
+    },
+    {
+      "title": "合成满额活动",
+      "status": "OPEN",
+      "session": "morning",
+      "domainId": "campus-demo",
+      "capacity": 0,
+      "synthetic": true,
+      "deadlineAt": "2026-10-17T11:27:38Z",
+      "activityId": "campus-demo-full",
+      "location": "公共活动室",
+      "startsAt": "2026-10-18T11:27:38Z"
+    },
+    {
+      "title": "合成志愿活动",
+      "status": "OPEN",
+      "session": "morning",
+      "domainId": "community-demo",
+      "capacity": 2,
+      "synthetic": true,
+      "deadlineAt": "2026-10-17T11:27:38Z",
+      "activityId": "community-demo-activity-001",
+      "location": "公共活动室",
+      "startsAt": "2026-10-18T11:27:38Z"
+    },
+    {
+      "title": "合成已截止活动",
+      "status": "CLOSED",
+      "session": "morning",
+      "domainId": "community-demo",
+      "capacity": 1,
+      "synthetic": true,
+      "deadlineAt": "2026-10-13T11:27:38Z",
+      "activityId": "community-demo-closed",
+      "location": "公共活动室",
+      "startsAt": "2026-10-14T11:27:38Z"
+    },
+    {
+      "title": "合成满额活动",
+      "status": "OPEN",
+      "session": "morning",
+      "domainId": "community-demo",
+      "capacity": 0,
+      "synthetic": true,
+      "deadlineAt": "2026-10-17T11:27:38Z",
+      "activityId": "community-demo-full",
+      "location": "公共活动室",
+      "startsAt": "2026-10-18T11:27:38Z"
+    }
+  ],
+  "generatedAt": "2026-10-15T11:27:38Z",
+  "version": "synthetic-0.1.0-20261015T112738Z",
+  "dictionary": [
+    "社区",
+    "居民",
+    "服务台",
+    "公共区域",
+    "公共活动室",
+    "通知",
+    "供水",
+    "维护",
+    "办事",
+    "材料",
+    "咨询",
+    "物业",
+    "维修",
+    "报修",
+    "地点",
+    "描述",
+    "联系方式",
+    "草稿",
+    "确认",
+    "工单",
+    "养老",
+    "医疗",
+    "预约",
+    "活动",
+    "场次",
+    "报名",
+    "失物",
+    "拾物",
+    "认领",
+    "物品",
+    "核验",
+    "版本",
+    "过期",
+    "冲突",
+    "权限",
+    "校园",
+    "课程",
+    "考试"
+  ],
+  "provenance": "Self-authored local synthetic fixture; no private data or external business source copied",
+  "schedule": [
+    {
+      "kind": "course",
+      "location": "教学楼演示教室",
+      "domainId": "campus-demo",
+      "endsAt": "2026-10-16T13:27:38Z",
+      "title": "合成仓颉课程",
+      "userId": "user-syn-campus-001",
+      "startsAt": "2026-10-16T11:27:38Z",
+      "scheduleId": "course-001"
+    },
+    {
+      "kind": "exam",
+      "location": "教学楼演示教室",
+      "domainId": "campus-demo",
+      "endsAt": "2026-10-22T13:27:38Z",
+      "title": "合成课程考试",
+      "userId": "user-syn-campus-001",
+      "startsAt": "2026-10-22T11:27:38Z",
+      "scheduleId": "exam-001"
+    }
+  ],
+  "schemaVersion": "backend-synthetic-0.1",
+  "records": [
+    {
+      "campus": [
+        "SYN_CAMPUS_A"
+      ],
+      "domainId": "campus-demo",
+      "title": "合成报修规则",
+      "roles": [
+        "student",
+        "staff"
+      ],
+      "matterId": "campus-demo.repair",
+      "effectiveTo": "2026-11-14T11:27:38Z",
+      "evidenceId": "K_REPAIR",
+      "contentHash": "sha256:ebd5bc8570d3f9d909a4cbe55e1e374f6552f3a84f4290be49c40ca3345a696b",
+      "synthetic": true,
+      "sourceId": "SRC_SYN_K_LOCAL",
+      "publishedAt": "2026-10-15T11:27:38Z",
+      "temporalStatus": "known_current",
+      "kind": "repair",
+      "revoked": false,
+      "realBusinessWrite": false,
+      "content": "公共区域报修维修需填写地点、问题描述和联系代号。先查看草稿并确认，再提交演示工单；无真实受理。",
+      "version": "1.0.0",
+      "effectiveFrom": "2026-10-14T11:27:38Z"
+    },
+    {
+      "campus": [
+        "SYN_CAMPUS_A"
+      ],
+      "domainId": "campus-demo",
+      "title": "合成供水维护通知",
+      "roles": [
+        "student",
+        "staff"
+      ],
+      "matterId": "campus-demo.notice",
+      "effectiveTo": "2026-11-14T11:27:38Z",
+      "evidenceId": "K_NOTICE",
+      "contentHash": "sha256:7f63cdbf2d20efea2fd386fb259284dded2dce8ba436294348a0361ab05d3109",
+      "synthetic": true,
+      "sourceId": "SRC_SYN_K_LOCAL",
+      "publishedAt": "2026-10-15T11:27:38Z",
+      "temporalStatus": "known_current",
+      "kind": "notice",
+      "revoked": false,
+      "realBusinessWrite": false,
+      "content": "通知：公共区域供水维护，上午九点到十一点暂停供水。请提前准备。",
+      "version": "1.0.0",
+      "effectiveFrom": "2026-10-14T11:27:38Z"
+    },
+    {
+      "campus": [
+        "SYN_CAMPUS_A"
+      ],
+      "domainId": "campus-demo",
+      "title": "合成活动报名规则",
+      "roles": [
+        "student",
+        "staff"
+      ],
+      "matterId": "campus-demo.activity",
+      "effectiveTo": "2026-11-14T11:27:38Z",
+      "evidenceId": "K_ACTIVITY",
+      "contentHash": "sha256:d7640f2e229d89d61c38759bf9e2d9ad8427c052c6c2426cee1c660d08a832e3",
+      "synthetic": true,
+      "sourceId": "SRC_SYN_K_LOCAL",
+      "publishedAt": "2026-10-15T11:27:38Z",
+      "temporalStatus": "known_current",
+      "kind": "activity",
+      "revoked": false,
+      "realBusinessWrite": false,
+      "content": "活动报名需要选择活动场次和联系代号，先确认草稿；报名截止、名额和重复报名在提交时检查。",
+      "version": "1.0.0",
+      "effectiveFrom": "2026-10-14T11:27:38Z"
+    },
+    {
+      "campus": [
+        "SYN_CAMPUS_A"
+      ],
+      "domainId": "campus-demo",
+      "title": "合成失物规则",
+      "roles": [
+        "student",
+        "staff"
+      ],
+      "matterId": "campus-demo.lost",
+      "effectiveTo": "2026-11-14T11:27:38Z",
+      "evidenceId": "K_LOST",
+      "contentHash": "sha256:bf0f1857770675057447448a96f49feeeffe9705fddd8bbe2fbc8deb714e3fa2",
+      "synthetic": true,
+      "sourceId": "SRC_SYN_K_LOCAL",
+      "publishedAt": "2026-10-15T11:27:38Z",
+      "temporalStatus": "known_current",
+      "kind": "lost",
+      "revoked": false,
+      "realBusinessWrite": false,
+      "content": "失物拾物发布需物品描述、地点、日期和联系代号，确认后进入待审核，不公开电话或证件。",
+      "version": "1.0.0",
+      "effectiveFrom": "2026-10-14T11:27:38Z"
+    },
+    {
+      "campus": [
+        "SYN_CAMPUS_A"
+      ],
+      "domainId": "campus-demo",
+      "title": "合成课程考试说明",
+      "roles": [
+        "student",
+        "staff"
+      ],
+      "matterId": "campus-demo.schedule",
+      "effectiveTo": "2026-11-14T11:27:38Z",
+      "evidenceId": "K_SCHEDULE",
+      "contentHash": "sha256:c084a213a8599c3a86089243fc89394f8bbecfb2a48359ebb315ba8d9601020c",
+      "synthetic": true,
+      "sourceId": "SRC_SYN_K_LOCAL",
+      "publishedAt": "2026-10-15T11:27:38Z",
+      "temporalStatus": "known_current",
+      "kind": "schedule",
+      "revoked": false,
+      "realBusinessWrite": false,
+      "content": "课程考试日程仅为演示；个人课表主动导入到客户端本地，不上传教务密码。",
+      "version": "1.0.0",
+      "effectiveFrom": "2026-10-14T11:27:38Z"
+    },
+    {
+      "campus": [
+        "SYN_CAMPUS_A"
+      ],
+      "domainId": "campus-demo",
+      "title": "隔离测试",
+      "roles": [
+        "student"
+      ],
+      "matterId": "campus-demo.guard.expired",
+      "effectiveTo": "2026-10-14T11:27:38Z",
+      "evidenceId": "K_GUARD_expired",
+      "contentHash": "sha256:9ffad32f6cfb8b94f16af6e08674231408c4b19d5fc57ed769d41ea696ff8328",
+      "synthetic": true,
+      "sourceId": "SRC_SYN_K_LOCAL",
+      "publishedAt": "2026-10-15T11:27:38Z",
+      "temporalStatus": "known_current",
+      "kind": "guard",
+      "revoked": false,
+      "realBusinessWrite": false,
+      "content": "隔离测试秘词：龙舟秘笈",
+      "version": "1.0.0",
+      "effectiveFrom": "2026-10-12T11:27:38Z"
+    },
+    {
+      "campus": [
+        "SYN_CAMPUS_A"
+      ],
+      "domainId": "campus-demo",
+      "title": "隔离测试",
+      "roles": [
+        "student"
+      ],
+      "matterId": "campus-demo.guard.unknown",
+      "effectiveTo": null,
+      "evidenceId": "K_GUARD_unknown",
+      "contentHash": "sha256:9ffad32f6cfb8b94f16af6e08674231408c4b19d5fc57ed769d41ea696ff8328",
+      "synthetic": true,
+      "sourceId": "SRC_SYN_K_LOCAL",
+      "publishedAt": "2026-10-15T11:27:38Z",
+      "temporalStatus": "unknown",
+      "kind": "guard",
+      "revoked": false,
+      "realBusinessWrite": false,
+      "content": "隔离测试秘词：龙舟秘笈",
+      "version": "1.0.0",
+      "effectiveFrom": "2026-10-12T11:27:38Z"
+    },
+    {
+      "campus": [
+        "SYN_CAMPUS_A"
+      ],
+      "domainId": "campus-demo",
+      "title": "隔离测试",
+      "roles": [
+        "staff"
+      ],
+      "matterId": "campus-demo.guard.staff",
+      "effectiveTo": "2026-11-14T11:27:38Z",
+      "evidenceId": "K_GUARD_staff",
+      "contentHash": "sha256:9ffad32f6cfb8b94f16af6e08674231408c4b19d5fc57ed769d41ea696ff8328",
+      "synthetic": true,
+      "sourceId": "SRC_SYN_K_LOCAL",
+      "publishedAt": "2026-10-15T11:27:38Z",
+      "temporalStatus": "known_current",
+      "kind": "guard",
+      "revoked": false,
+      "realBusinessWrite": false,
+      "content": "隔离测试秘词：龙舟秘笈",
+      "version": "1.0.0",
+      "effectiveFrom": "2026-10-12T11:27:38Z"
+    },
+    {
+      "campus": [
+        "SYN_OTHER_AREA"
+      ],
+      "domainId": "campus-demo",
+      "title": "隔离测试",
+      "roles": [
+        "student"
+      ],
+      "matterId": "campus-demo.guard.other-area",
+      "effectiveTo": "2026-11-14T11:27:38Z",
+      "evidenceId": "K_GUARD_other-area",
+      "contentHash": "sha256:9ffad32f6cfb8b94f16af6e08674231408c4b19d5fc57ed769d41ea696ff8328",
+      "synthetic": true,
+      "sourceId": "SRC_SYN_K_LOCAL",
+      "publishedAt": "2026-10-15T11:27:38Z",
+      "temporalStatus": "known_current",
+      "kind": "guard",
+      "revoked": false,
+      "realBusinessWrite": false,
+      "content": "隔离测试秘词：龙舟秘笈",
+      "version": "1.0.0",
+      "effectiveFrom": "2026-10-12T11:27:38Z"
+    },
+    {
+      "campus": [
+        "SYN_COMMUNITY_A"
+      ],
+      "domainId": "community-demo",
+      "title": "合成报修规则",
+      "roles": [
+        "resident",
+        "staff"
+      ],
+      "matterId": "community-demo.repair",
+      "effectiveTo": "2026-11-14T11:27:38Z",
+      "evidenceId": "M_REPAIR",
+      "contentHash": "sha256:ebd5bc8570d3f9d909a4cbe55e1e374f6552f3a84f4290be49c40ca3345a696b",
+      "synthetic": true,
+      "sourceId": "SRC_SYN_M_LOCAL",
+      "publishedAt": "2026-10-15T11:27:38Z",
+      "temporalStatus": "known_current",
+      "kind": "repair",
+      "revoked": false,
+      "realBusinessWrite": false,
+      "content": "公共区域报修维修需填写地点、问题描述和联系代号。先查看草稿并确认，再提交演示工单；无真实受理。",
+      "version": "1.0.0",
+      "effectiveFrom": "2026-10-14T11:27:38Z"
+    },
+    {
+      "campus": [
+        "SYN_COMMUNITY_A"
+      ],
+      "domainId": "community-demo",
+      "title": "合成供水维护通知",
+      "roles": [
+        "resident",
+        "staff"
+      ],
+      "matterId": "community-demo.notice",
+      "effectiveTo": "2026-11-14T11:27:38Z",
+      "evidenceId": "M_NOTICE",
+      "contentHash": "sha256:7f63cdbf2d20efea2fd386fb259284dded2dce8ba436294348a0361ab05d3109",
+      "synthetic": true,
+      "sourceId": "SRC_SYN_M_LOCAL",
+      "publishedAt": "2026-10-15T11:27:38Z",
+      "temporalStatus": "known_current",
+      "kind": "notice",
+      "revoked": false,
+      "realBusinessWrite": false,
+      "content": "通知：公共区域供水维护，上午九点到十一点暂停供水。请提前准备。",
+      "version": "1.0.0",
+      "effectiveFrom": "2026-10-14T11:27:38Z"
+    },
+    {
+      "campus": [
+        "SYN_COMMUNITY_A"
+      ],
+      "domainId": "community-demo",
+      "title": "合成办事材料说明",
+      "roles": [
+        "resident",
+        "staff"
+      ],
+      "matterId": "community-demo.service",
+      "effectiveTo": "2026-11-14T11:27:38Z",
+      "evidenceId": "M_SERVICE",
+      "contentHash": "sha256:3a589d5a342e85a61ec01d3a8a71d2d2012272565ef6b13934b1d912e9af7f00",
+      "synthetic": true,
+      "sourceId": "SRC_SYN_M_LOCAL",
+      "publishedAt": "2026-10-15T11:27:38Z",
+      "temporalStatus": "known_current",
+      "kind": "service",
+      "revoked": false,
+      "realBusinessWrite": false,
+      "content": "居民办事咨询请说明事项；服务台提供材料清单，演示不办理证明、不收身份证。",
+      "version": "1.0.0",
+      "effectiveFrom": "2026-10-14T11:27:38Z"
+    },
+    {
+      "campus": [
+        "SYN_COMMUNITY_A"
+      ],
+      "domainId": "community-demo",
+      "title": "合成养老服务说明",
+      "roles": [
+        "resident",
+        "staff"
+      ],
+      "matterId": "community-demo.eldercare",
+      "effectiveTo": "2026-11-14T11:27:38Z",
+      "evidenceId": "M_ELDERCARE",
+      "contentHash": "sha256:87ea9ea7fe25d968ac9651e008f3c5c92e5b5d3546bafb142251bf15e7e4af0e",
+      "synthetic": true,
+      "sourceId": "SRC_SYN_M_LOCAL",
+      "publishedAt": "2026-10-15T11:27:38Z",
+      "temporalStatus": "known_current",
+      "kind": "eldercare",
+      "revoked": false,
+      "realBusinessWrite": false,
+      "content": "养老服务有公共活动室陪伴与服务台咨询；医疗问题须咨询专业机构，不提供诊断或医疗预约。",
+      "version": "1.0.0",
+      "effectiveFrom": "2026-10-14T11:27:38Z"
+    },
+    {
+      "campus": [
+        "SYN_COMMUNITY_A"
+      ],
+      "domainId": "community-demo",
+      "title": "合成活动报名规则",
+      "roles": [
+        "resident",
+        "staff"
+      ],
+      "matterId": "community-demo.activity",
+      "effectiveTo": "2026-11-14T11:27:38Z",
+      "evidenceId": "M_ACTIVITY",
+      "contentHash": "sha256:d7640f2e229d89d61c38759bf9e2d9ad8427c052c6c2426cee1c660d08a832e3",
+      "synthetic": true,
+      "sourceId": "SRC_SYN_M_LOCAL",
+      "publishedAt": "2026-10-15T11:27:38Z",
+      "temporalStatus": "known_current",
+      "kind": "activity",
+      "revoked": false,
+      "realBusinessWrite": false,
+      "content": "活动报名需要选择活动场次和联系代号，先确认草稿；报名截止、名额和重复报名在提交时检查。",
+      "version": "1.0.0",
+      "effectiveFrom": "2026-10-14T11:27:38Z"
+    },
+    {
+      "campus": [
+        "SYN_COMMUNITY_A"
+      ],
+      "domainId": "community-demo",
+      "title": "合成失物规则",
+      "roles": [
+        "resident",
+        "staff"
+      ],
+      "matterId": "community-demo.lost",
+      "effectiveTo": "2026-11-14T11:27:38Z",
+      "evidenceId": "M_LOST",
+      "contentHash": "sha256:bf0f1857770675057447448a96f49feeeffe9705fddd8bbe2fbc8deb714e3fa2",
+      "synthetic": true,
+      "sourceId": "SRC_SYN_M_LOCAL",
+      "publishedAt": "2026-10-15T11:27:38Z",
+      "temporalStatus": "known_current",
+      "kind": "lost",
+      "revoked": false,
+      "realBusinessWrite": false,
+      "content": "失物拾物发布需物品描述、地点、日期和联系代号，确认后进入待审核，不公开电话或证件。",
+      "version": "1.0.0",
+      "effectiveFrom": "2026-10-14T11:27:38Z"
+    },
+    {
+      "campus": [
+        "SYN_COMMUNITY_A"
+      ],
+      "domainId": "community-demo",
+      "title": "隔离测试",
+      "roles": [
+        "resident"
+      ],
+      "matterId": "community-demo.guard.expired",
+      "effectiveTo": "2026-10-14T11:27:38Z",
+      "evidenceId": "M_GUARD_expired",
+      "contentHash": "sha256:9ffad32f6cfb8b94f16af6e08674231408c4b19d5fc57ed769d41ea696ff8328",
+      "synthetic": true,
+      "sourceId": "SRC_SYN_M_LOCAL",
+      "publishedAt": "2026-10-15T11:27:38Z",
+      "temporalStatus": "known_current",
+      "kind": "guard",
+      "revoked": false,
+      "realBusinessWrite": false,
+      "content": "隔离测试秘词：龙舟秘笈",
+      "version": "1.0.0",
+      "effectiveFrom": "2026-10-12T11:27:38Z"
+    },
+    {
+      "campus": [
+        "SYN_COMMUNITY_A"
+      ],
+      "domainId": "community-demo",
+      "title": "隔离测试",
+      "roles": [
+        "resident"
+      ],
+      "matterId": "community-demo.guard.unknown",
+      "effectiveTo": null,
+      "evidenceId": "M_GUARD_unknown",
+      "contentHash": "sha256:9ffad32f6cfb8b94f16af6e08674231408c4b19d5fc57ed769d41ea696ff8328",
+      "synthetic": true,
+      "sourceId": "SRC_SYN_M_LOCAL",
+      "publishedAt": "2026-10-15T11:27:38Z",
+      "temporalStatus": "unknown",
+      "kind": "guard",
+      "revoked": false,
+      "realBusinessWrite": false,
+      "content": "隔离测试秘词：龙舟秘笈",
+      "version": "1.0.0",
+      "effectiveFrom": "2026-10-12T11:27:38Z"
+    },
+    {
+      "campus": [
+        "SYN_COMMUNITY_A"
+      ],
+      "domainId": "community-demo",
+      "title": "隔离测试",
+      "roles": [
+        "staff"
+      ],
+      "matterId": "community-demo.guard.staff",
+      "effectiveTo": "2026-11-14T11:27:38Z",
+      "evidenceId": "M_GUARD_staff",
+      "contentHash": "sha256:9ffad32f6cfb8b94f16af6e08674231408c4b19d5fc57ed769d41ea696ff8328",
+      "synthetic": true,
+      "sourceId": "SRC_SYN_M_LOCAL",
+      "publishedAt": "2026-10-15T11:27:38Z",
+      "temporalStatus": "known_current",
+      "kind": "guard",
+      "revoked": false,
+      "realBusinessWrite": false,
+      "content": "隔离测试秘词：龙舟秘笈",
+      "version": "1.0.0",
+      "effectiveFrom": "2026-10-12T11:27:38Z"
+    },
+    {
+      "campus": [
+        "SYN_OTHER_AREA"
+      ],
+      "domainId": "community-demo",
+      "title": "隔离测试",
+      "roles": [
+        "resident"
+      ],
+      "matterId": "community-demo.guard.other-area",
+      "effectiveTo": "2026-11-14T11:27:38Z",
+      "evidenceId": "M_GUARD_other-area",
+      "contentHash": "sha256:9ffad32f6cfb8b94f16af6e08674231408c4b19d5fc57ed769d41ea696ff8328",
+      "synthetic": true,
+      "sourceId": "SRC_SYN_M_LOCAL",
+      "publishedAt": "2026-10-15T11:27:38Z",
+      "temporalStatus": "known_current",
+      "kind": "guard",
+      "revoked": false,
+      "realBusinessWrite": false,
+      "content": "隔离测试秘词：龙舟秘笈",
+      "version": "1.0.0",
+      "effectiveFrom": "2026-10-12T11:27:38Z"
+    }
+  ],
+  "realBusinessWrite": false,
+  "sources": [
+    {
+      "sourceId": "SRC_SYN_K_LOCAL",
+      "licenseStatus": "pending_team_confirmation",
+      "allowedPurpose": "local-development-only",
+      "type": "synthetic_authored",
+      "domainId": "campus-demo",
+      "realProvider": false
+    },
+    {
+      "sourceId": "SRC_SYN_M_LOCAL",
+      "licenseStatus": "pending_team_confirmation",
+      "allowedPurpose": "local-development-only",
+      "type": "synthetic_authored",
+      "domainId": "community-demo",
+      "realProvider": false
+    }
+  ]
+}

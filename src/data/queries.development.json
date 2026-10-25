@@ -1,0 +1,27 @@
+{
+  "version": "backend-development-0.1.0",
+  "synthetic": true,
+  "evaluationClass": "self-authored development queries, not blind or independent evaluation",
+  "queries": [
+    {"id":"K01","session":"campus-user","text":"报修维修需要哪些信息","gold":["K_REPAIR"]},
+    {"id":"K02","session":"campus-user","text":"公共区域灯坏了怎么报修","gold":["K_REPAIR"]},
+    {"id":"K03","session":"campus-user","text":"供水维护通知几点停水","gold":["K_NOTICE"]},
+    {"id":"K04","session":"campus-user","text":"课程考试课表","gold":["K_SCHEDULE"]},
+    {"id":"K05","session":"campus-user","text":"失物拾物物品发布需要审核吗","gold":["K_LOST"]},
+    {"id":"K06","session":"campus-user","text":"活动报名场次和截止名额","gold":["K_ACTIVITY"]},
+    {"id":"K07","session":"campus-user","text":"活动报名和失物发布都要确认吗","gold":["K_ACTIVITY","K_LOST"]},
+    {"id":"M01","session":"community-user","text":"办事材料清单咨询","gold":["M_SERVICE"]},
+    {"id":"M02","session":"community-user","text":"物业报修需要公共区域地点和描述","gold":["M_REPAIR"]},
+    {"id":"M03","session":"community-user","text":"养老服务类型有哪些","gold":["M_ELDERCARE"]},
+    {"id":"M04","session":"community-user","text":"老人能否在这里医疗预约诊断","gold":["M_ELDERCARE"]},
+    {"id":"M05","session":"community-user","text":"社区活动报名场次","gold":["M_ACTIVITY"]},
+    {"id":"M06","session":"community-user","text":"失物物品核验认领","gold":["M_LOST"]},
+    {"id":"M07","session":"community-user","text":"供水维护通知","gold":["M_NOTICE"]},
+    {"id":"M08","session":"community-user","text":"社区维修需要先确认草稿吗","gold":["M_REPAIR"]},
+    {"id":"M09","session":"community-user","text":"材料清单和养老咨询","gold":["M_SERVICE","M_ELDERCARE"]},
+    {"id":"N01","session":"campus-user","text":"龙舟秘笈","gold":[]},
+    {"id":"N02","session":"community-user","text":"课程考试课表","gold":[]},
+    {"id":"N03","session":"campus-user","text":"银河穿越许可证","gold":[]},
+    {"id":"N04","session":"community-user","text":"你好","gold":[]}
+  ]
+}

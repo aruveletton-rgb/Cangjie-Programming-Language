@@ -1,0 +1,8 @@
+[package]
+cjc-version = "1.0.5"
+name = "cj_zh_search"
+description = "Deterministic dictionary/ngram Chinese retrieval library"
+version = "0.1.0"
+output-type = "static"
+
+[dependencies]

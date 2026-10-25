@@ -1,0 +1,8 @@
+[package]
+cjc-version = "1.0.5"
+name = "search_consumer"
+version = "0.1.0"
+output-type = "executable"
+
+[dependencies]
+cj_zh_search = { path = "../.." }

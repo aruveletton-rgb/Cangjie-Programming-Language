@@ -1,0 +1,11 @@
+[package]
+cjc-version = "1.0.5"
+name = "ict_backend"
+description = "Loopback synthetic campus/community Cangjie prototype"
+version = "0.1.0"
+output-type = "executable"
+
+[dependencies]
+cj_zh_search = { path = "../cj_zh_search" }
+
+# The build script supplies the existing project-local stdx binary dependency.

@@ -1,18 +1,20 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+# 仓颉构建产物
+target/
+*.o
+*.a
+*.so
+*.dll
+*.exe
 
-# Other files and folders
-.settings/
+# 本地运行与审计产物
+*.log
+audit/
+temp/
+*.local.json
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
-
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+# 编辑器与系统
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
