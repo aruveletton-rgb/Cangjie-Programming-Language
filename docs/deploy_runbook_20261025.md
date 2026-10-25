@@ -225,3 +225,52 @@ sudo systemctl start ict-backend
 1. `cangjie-lang.cn` 下载直链是**签名 URL**，只能从页面 JS 生成的 `<a href>` 里取，猜不出来。
 2. gitcode 对普通宽带的 IP 返回 **418**，对华为云主机 IP 返回 **200**。大文件让服务器自己下：
    本机 SFTP 上传实测 33 KB/s（268MB ≈ 2.3 小时），服务器直下 1.2—1.5 MB/s（≈3 分钟）。
+
+---
+
+## 13. IP 直连模式（2026-10-25 已实现，仅供开发/演示）
+
+没有域名时可用 IP 直接访问，已在本项目实测通过。完整输出见
+`audit/backend/cloud_deploy_20261025/ip-access-verification.md`。
+
+**能做什么**：公网 HTTPS 访问（自签 IP SAN）、会话登录、业务查询、401/403 拦截。
+**不能做什么**：上架。备案按域名登记、自签证书不受信任、隐私政策链接打不开 —— 三条都是必然驳回。
+
+### 关键配置
+
+```bash
+# 1) IP SAN 自签证书（有效期 1 年）
+cd /srv/ict-src/src/backend/deploy && bash gen-cert.sh 124.70.187.77 /opt/ict-cloud/tls
+
+# 2) Nginx 反代（80→443，443→127.0.0.1:38082），见 /etc/nginx/sites-available/ict
+
+# 3) 切 session 模式（公网 origin 会强制 session，demo 令牌失效）
+#    session 模式**必须**有凭据文件，否则启动即 VALIDATION_ERROR（main.cj:59）
+cat >> /opt/ict-cloud/deploy/runtime.env <<'ENV'
+ICT_PUBLIC_ORIGIN=https://124.70.187.77
+ICT_AUTH_MODE=session
+ICT_AUTH_FILE=/opt/ict-cloud/state/users.json
+ENV
+systemctl restart ict-backend
+```
+
+凭据文件格式：`{"users":[{"username","salt","passwordHash","userId","domain","role","area"}]}`，
+`passwordHash = sha256(salt + password)`，`role ∈ {student, resident, staff}`。
+
+### 外网验收（四条，从非云主机的机器执行）
+
+```bash
+IP=124.70.187.77
+curl -s -o /dev/null -w "exit=%{exitcode}\n" https://$IP/health          # 期望 exit=60（自签）
+curl -sk https://$IP/health | grep -o '"authMode":"[a-z]*"'              # 期望 session
+curl -s -o /dev/null -w "%{http_code}\n" http://$IP/health               # 期望 301
+curl -sk -o /dev/null -w "%{http_code}\n" -X POST https://$IP/api/v1/chat \
+  -H "Content-Type: application/json" -H "Origin: https://$IP" -d '{"message":"x"}'   # 期望 401
+```
+
+### 换成域名时只需三步
+
+1. `certbot certonly --webroot -w /var/www/certbot -d <域名>`（先放行 80）
+2. 改 `/etc/nginx/sites-available/ict` 的 `server_name` 与证书路径为
+   `/etc/letsencrypt/live/<域名>/fullchain.pem`
+3. `ICT_PUBLIC_ORIGIN=https://<域名>`，`systemctl restart ict-backend`
